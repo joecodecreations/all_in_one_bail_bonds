@@ -7,7 +7,7 @@ A fast, mobile-first website for All In One Bail Bonds (Raleigh, Durham and Wils
 
 ## How it's built
 
-- Plain static HTML, one CSS file and one small JavaScript file. No framework, no tracking, no web fonts, no third-party scripts.
+- Plain static HTML, one CSS file, one small JavaScript file and one self-hosted font. No framework, no tracking, no third-party scripts.
 - `python3 build.py` (standard library only) turns `src/` and `content.py` into `docs/`.
 - **Every business fact lives in `src/site.json`:** phones, addresses, review counts, payment wording, the agent's name. Change it there, rebuild, and every page, the structured data, `llms.txt` and the sitemap update together.
 - **Every county fact lives in `src/data/counties.json`** (jail, courthouse, clerk phone, official inmate lookup), each with its source links.
@@ -29,9 +29,17 @@ Home · 3 office pages · 18 county pages · service areas · how bail works in 
 
 ```bash
 python3 build.py              # build docs/ (prints WARN lines for broken internal links)
-python3 tools/images.py       # logo sizes, favicon and share card (needs Pillow)
+python3 tools/images.py       # logo PNGs, favicon and share card from src/brand/mark.svg (Pillow + Chrome)
+python3 tools/grok_images.py  # icons, scenes and logo concepts with Grok Imagine -> media/grok/
+python3 tools/envato_search.py stock-video "raleigh skyline"   # search Envato in the Orbital browser session
+<venv>/bin/python tools/media.py   # media/grok + media/envato -> src/img and src/video (Pillow, numpy, scipy, ffmpeg)
 python3 tools/shots.py        # full-page screenshots, desktop + mobile (needs Pillow and Google Chrome)
 ```
+
+## Media
+
+- `media/grok/`: Grok Imagine originals and prompts (`tools/grok_images.py`). People in the scenes are AI-generated.
+- `media/envato/`: Envato Elements originals (not committed; see `LICENSES.md` there). The site uses a 2.8 MB 720p hero video and compressed WebP/JPEG copies.
 
 ## Going live on allinonebailbonds.org
 
