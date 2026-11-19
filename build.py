@@ -40,14 +40,33 @@ def absu(path=""):
     return BASE_URL + "/" + path.lstrip("/")
 
 
-def call_btn(cls="btn btn-red", label=None, tel=TEL, phone=PHONE, track="call"):
+def call_btn(cls="btn btn-gold", label=None, tel=TEL, phone=PHONE, track="call"):
     return f'<a class="{cls}" href="{tel}" data-track="{track}">{ICON_PHONE}{label or "Call " + phone}</a>'
 
 
-def text_btn(cls="btn btn-ghost", label="Text us"):
+def text_btn(cls="btn btn-glass", label="Text us"):
     if not S["sms_enabled"]:
         return ""
     return f'<a class="{cls}" href="{SMS}" data-track="text">{ICON_MSG}{label}</a>'
+
+
+MARK = (SRC / "brand" / "mark.svg").read_text().replace('<svg xmlns="http://www.w3.org/2000/svg"', '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"', 1)
+MENU_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>'
+
+
+def icon(name, cls="ico", alt=""):
+    return f'<img class="{cls}" src="{u("img/icons/" + name + ".webp")}" width="64" height="64" alt="{e(alt)}" loading="lazy" decoding="async">'
+
+
+def tile(name):
+    return f'<span class="ico-tile">{icon(name, "")}</span>'
+
+
+def pic(name, alt="", cls="", eager=False, sizes="(min-width: 1000px) 50vw, 100vw"):
+    """Responsive scene image from src/img/scenes (900 and 1600 px WebP, JPEG fallback)."""
+    load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    return (f'<picture><source type="image/webp" srcset="{u("img/scenes/" + name + "-900.webp")} 900w, {u("img/scenes/" + name + "-1600.webp")} 1600w" sizes="{sizes}">'
+            f'<img class="{cls}" src="{u("img/scenes/" + name + "-1600.jpg")}" alt="{e(alt)}" width="1600" height="900" {load} decoding="async"></picture>')
 
 
 def maps_url(q):
@@ -155,7 +174,8 @@ def shell(path, title, desc, body, crumbs=None, ld=None, lang="en", hero=""):
 <meta name="description" content="{e(desc)}">
 {robots}
 <link rel="canonical" href="{canonical}">
-<meta name="theme-color" content="#0F0F12">
+<meta name="theme-color" content="#0A1A33">
+<link rel="preload" href="{u('assets/fonts/jakarta-latin.woff2')}" as="font" type="font/woff2" crossorigin>
 <meta name="format-detection" content="telephone=yes">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{e(S['name'])}">
@@ -167,6 +187,7 @@ def shell(path, title, desc, body, crumbs=None, ld=None, lang="en", hero=""):
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{u('favicon.ico')}" sizes="32x32">
+<link rel="icon" href="{u('brand/mark.svg')}" type="image/svg+xml">
 <link rel="icon" href="{u('img/logo-192.png')}" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="{u('img/logo-192.png')}">
 <link rel="manifest" href="{u('site.webmanifest')}">
@@ -176,23 +197,22 @@ def shell(path, title, desc, body, crumbs=None, ld=None, lang="en", hero=""):
 <body>
 <a class="skip" href="#main">Skip to content</a>
 {ribbon}
-<div class="topbar"><div class="wrap"><span>Open 24/7<span class="hide-s"> · Licensed North Carolina bail agents</span></span><a href="{TEL}" data-track="call-topbar">Call {PHONE}</a></div></div>
 <header class="site"><div class="wrap">
-<a class="brand" href="{u('')}"><img src="{u('img/logo-88.png')}" width="44" height="44" alt="All In One Bail Bonds logo"><span>All In One Bail Bonds<small>Always available</small></span></a>
+<a class="brand" href="{u('')}" aria-label="All In One Bail Bonds, home">{MARK}<span><b>All In One</b><small>BAIL BONDS</small></span></a>
 <nav class="main" aria-label="Main">{nav}</nav>
-<div class="hdr-cta">{call_btn("btn btn-red btn-sm", "Call now", track="call-header")}<button class="menu-btn" aria-expanded="false" aria-controls="drawer">Menu</button></div>
+<div class="hdr-cta">{call_btn("btn btn-gold btn-sm", '<span class="lbl">Call </span>24/7', track="call-header")}<button class="menu-btn" aria-expanded="false" aria-controls="drawer" aria-label="Menu">{MENU_ICON}</button></div>
 </div><nav class="drawer" id="drawer" aria-label="Mobile">{drawer}</nav></header>
 <main id="main">
 {body}
-<section class="band"><div class="wrap"><h2>Need someone out of jail tonight?</h2><p>A licensed bail agent answers 24 hours a day. Have the person's full name and the county ready if you can.</p><div class="cta">{call_btn("btn btn-white", track="call-band")}{text_btn("btn btn-ghost", "Text " + PHONE)}</div></div></section>
+<section class="band"><div class="bg">{pic("highway", "")}</div><div class="wrap rv"><span class="live"><i></i>An agent is available now</span><h2 style="margin-top:12px">We answer. Any hour.</h2><p>A licensed bail agent answers 24 hours a day, every day. Have the person's full name and the county ready if you can.</p><div class="cta">{call_btn(track="call-band")}{text_btn("btn btn-glass", "Text " + PHONE)}</div></div></section>
 </main>
 <footer class="site"><div class="wrap"><div class="fgrid">
-<div><h3>{e(S['name'])}</h3><p>24-hour bail bond service across North Carolina, with offices in Raleigh, Durham and Wilson.</p><p><a href="{TEL}"><strong>{PHONE}</strong></a><br><a href="mailto:{S['email']}">{S['email']}</a></p></div>
+<div><a class="brand" href="{u('')}" style="margin-bottom:14px"><img src="{u('brand/mark.svg')}" width="44" height="44" alt=""><span><b>All In One</b><small>BAIL BONDS</small></span></a><p>24-hour bail bond service across North Carolina, with offices in Raleigh, Durham and Wilson.</p><p><a href="{TEL}"><strong>{PHONE}</strong></a><br><a href="mailto:{S['email']}">{S['email']}</a></p></div>
 <div><h3>Offices</h3><ul>{offices_f}</ul></div>
 <div><h3>Bail bonds</h3><ul><li><a href="{u('dwi-bail-bonds/')}">DWI / DUI bonds</a></li><li><a href="{u('felony-bail-bonds/')}">Felony bonds</a></li><li><a href="{u('misdemeanor-bail-bonds/')}">Misdemeanor bonds</a></li><li><a href="{u('domestic-violence-bail-bonds/')}">Domestic violence bonds</a></li><li><a href="{u('failure-to-appear-bonds/')}">Missed court / failure to appear</a></li><li><a href="{u('payment-plans/')}">Payment arrangements</a></li></ul></div>
 <div><h3>Help</h3><ul><li><a href="{u('how-bail-works-nc/')}">How bail works in NC</a></li><li><a href="{u('bail-bond-cost-nc/')}">What a bail bond costs</a></li><li><a href="{u('jail-guides/wake-county-jail/')}">Wake County jail guide</a></li><li><a href="{u('jail-guides/durham-county-jail/')}">Durham County jail guide</a></li><li><a href="{u('jail-guides/wilson-county-jail/')}">Wilson County jail guide</a></li><li><a href="{u('service-areas/')}">All counties we serve</a></li><li><a href="{u('faq/')}">FAQ</a></li></ul></div>
 </div><p class="legal">© 2026 {e(S['name'])}. {e(S['agent']['name'])}, {e(S['agent']['title'])}{lic}. We are a private bail bond agency, not a law firm, and nothing on this site is legal advice. We are not affiliated with any court, sheriff's office, jail or government agency. In North Carolina the bail bond premium cannot exceed 15% of the bond amount (N.C. Gen. Stat. § 58-71-95).{es}</p></div></footer>
-<div class="{bar_cls}">{call_btn("btn btn-red", "Call 24/7", track="call-sticky")}{text_btn("btn btn-white", "Text us")}</div>
+<div class="{bar_cls}">{call_btn("btn btn-gold", "Call 24/7", track="call-sticky")}{text_btn("btn btn-glass", "Text us")}</div>
 <script src="{u('assets/app.js')}" defer></script>
 </body>
 </html>
@@ -204,10 +224,12 @@ def shell(path, title, desc, body, crumbs=None, ld=None, lang="en", hero=""):
         PAGES.append((path, title, desc))
 
 
-def page_hero(h1, lede, eyebrow="", cta=True):
-    eb = f'<span class="eyebrow">{eyebrow}</span><br>' if eyebrow else ""
-    c = f'<div class="cta">{call_btn()}{text_btn()}</div>' if cta else ""
-    return f'<section class="page-hero"><div class="wrap">{{{{CRUMBS}}}}{eb}<h1>{h1}</h1><p class="lede">{lede}</p>{c}</div></section>'
+def page_hero(h1, lede, eyebrow="", cta=True, bg=None, office=None):
+    eb = f'<span class="live"><i></i>{eyebrow}</span>' if eyebrow else ""
+    cb = call_btn(tel="tel:" + office["phone_e164"], phone=office["phone"]) if office else call_btn()
+    c = f'<div class="cta">{cb}{text_btn()}</div>' if cta else ""
+    b = f'<div class="bg">{pic(bg, "", eager=True, sizes="100vw")}</div>' if bg else ""
+    return f'<section class="page-hero{" has-bg" if bg else ""}">{b}<div class="wrap">{{{{CRUMBS}}}}{eb}<h1>{h1}</h1><p class="lede">{lede}</p>{c}</div></section>'
 
 
 def office_card(o, link=True):
@@ -215,7 +237,7 @@ def office_card(o, link=True):
     return (f'<div class="card office"><h3>{o["city"]}, NC</h3>'
             f'<p class="rating"><span class="stars" aria-hidden="true">★★★★★</span> {o["google_rating"]} · {o["google_reviews"]} Google reviews</p>'
             f'<address>{e(o["street"])}<br>{o["locality"]}, NC {o["zip"]}</address>'
-            f'<div class="acts">{call_btn("btn btn-red btn-sm", o["phone"], "tel:" + o["phone_e164"], track="call-office-" + o["city"].lower())}'
+            f'<div class="acts">{call_btn("btn btn-gold btn-sm", o["phone"], "tel:" + o["phone_e164"], track="call-office-" + o["city"].lower())}'
             f'<a class="btn btn-line btn-sm" href="{maps_url(o["maps_query"])}" rel="noopener">Directions</a>{more}</div></div>')
 
 
@@ -225,7 +247,7 @@ def county_pills(exclude=None):
 
 
 def write_static():
-    for d in ("assets", "img"):
+    for d in ("assets", "img", "video", "brand"):
         if (SRC / d).exists():
             shutil.copytree(SRC / d, OUT / d, dirs_exist_ok=True)
     if (SRC / "favicon.ico").exists():

@@ -15,7 +15,7 @@ PAGES = {"home": "", "raleigh-office": "bail-bonds-raleigh-nc/", "wilson-office"
 
 def shot(url, out, w, h, mobile=False):
     cmd = [CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", f"--window-size={max(w, 520)},{h}",
-           "--virtual-time-budget=4000", f"--screenshot={out}"]
+           "--virtual-time-budget=9000", f"--screenshot={out}"]
     if mobile:
         # Headless Chrome will not lay out narrower than ~500px, so frame the page at phone width and crop.
         frame = Path(tempfile.mkdtemp()) / "frame.html"
@@ -43,8 +43,8 @@ def main():
     want = set(filter(None, a.pages.split(",")))
     for name, path in PAGES.items():
         if want and name not in want: continue
-        url = a.base.rstrip("/") + "/" + path
-        shot(url, out / f"{name}-desktop.png", 1366, 7000); trim(out / f"{name}-desktop.png")
+        url = a.base.rstrip("/") + "/" + path + "?shot"
+        shot(url, out / f"{name}-desktop.png", 1440, 9000); trim(out / f"{name}-desktop.png")
         shot(url, out / f"{name}-mobile.png", 390, 9000, True); trim(out / f"{name}-mobile.png")
         shot(url, out / f"{name}-mobile-fold.png", 390, 844, True)
         print("shot", name)

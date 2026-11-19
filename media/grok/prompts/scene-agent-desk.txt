@@ -1,0 +1,5 @@
+Call the image_gen tool exactly 2 time(s), all in the same step, each with aspect_ratio "16:9" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+
+<<<PROMPT
+Cinematic editorial photograph, realistic, natural skin tones, shallow depth of field, subtle film grain, no text, no logos, no watermarks, no police, no handcuffs, no jail. Scene: a tidy small-business office at night: a wooden desk with neat paperwork, a pen, a coffee mug and a desk lamp glowing, a phone face down, city lights blurred through the window behind, warm and calm, nobody in the frame.
+PROMPT>>>

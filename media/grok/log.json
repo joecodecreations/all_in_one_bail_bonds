@@ -1,0 +1,234 @@
+[
+ {
+  "slug": "icon-phone",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "icon-phone_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-phone",
+  "exit": 0,
+  "secs": 25,
+  "files": [
+   "icon-phone_v1.jpg",
+   "icon-phone_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-clock",
+  "exit": 0,
+  "secs": 25,
+  "files": [
+   "icon-clock_v1.jpg",
+   "icon-clock_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-document",
+  "exit": 0,
+  "secs": 26,
+  "files": [
+   "icon-document_v1.jpg",
+   "icon-document_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-calculator",
+  "exit": 0,
+  "secs": 24,
+  "files": [
+   "icon-calculator_v1.jpg",
+   "icon-calculator_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-shield",
+  "exit": 0,
+  "secs": 25,
+  "files": [
+   "icon-shield_v1.jpg",
+   "icon-shield_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-pin",
+  "exit": 0,
+  "secs": 26,
+  "files": [
+   "icon-pin_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-chat",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "icon-chat_v1.jpg",
+   "icon-chat_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-home-heart",
+  "exit": 0,
+  "secs": 22,
+  "files": [
+   "icon-home-heart_v1.jpg",
+   "icon-home-heart_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-handshake",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "icon-handshake_v1.jpg",
+   "icon-handshake_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-star",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "icon-star_v1.jpg",
+   "icon-star_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-calendar",
+  "exit": 0,
+  "secs": 18,
+  "files": [
+   "icon-calendar_v1.jpg",
+   "icon-calendar_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-car",
+  "exit": 0,
+  "secs": 24,
+  "files": [
+   "icon-car_v1.jpg",
+   "icon-car_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-scales",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "icon-scales_v1.jpg",
+   "icon-scales_v2.jpg"
+  ]
+ },
+ {
+  "slug": "icon-money",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "icon-money_v1.jpg",
+   "icon-money_v2.jpg"
+  ]
+ },
+ {
+  "slug": "scene-night-call",
+  "exit": 0,
+  "secs": 24,
+  "files": [
+   "scene-night-call_v1.jpg",
+   "scene-night-call_v2.jpg"
+  ]
+ },
+ {
+  "slug": "scene-agent-desk",
+  "exit": 0,
+  "secs": 22,
+  "files": [
+   "scene-agent-desk_v1.jpg",
+   "scene-agent-desk_v2.jpg"
+  ]
+ },
+ {
+  "slug": "scene-reunion",
+  "exit": 0,
+  "secs": 26,
+  "files": [
+   "scene-reunion_v1.jpg",
+   "scene-reunion_v2.jpg"
+  ]
+ },
+ {
+  "slug": "scene-highway-night",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "scene-highway-night_v1.jpg",
+   "scene-highway-night_v2.jpg"
+  ]
+ },
+ {
+  "slug": "scene-signing",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "scene-signing_v1.jpg",
+   "scene-signing_v2.jpg"
+  ]
+ },
+ {
+  "slug": "logo-door",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "logo-door_v1.jpg",
+   "logo-door_v2.jpg"
+  ]
+ },
+ {
+  "slug": "logo-sunrise",
+  "exit": 0,
+  "secs": 18,
+  "files": [
+   "logo-sunrise_v1.jpg",
+   "logo-sunrise_v2.jpg"
+  ]
+ },
+ {
+  "slug": "logo-key",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "logo-key_v1.jpg",
+   "logo-key_v2.jpg"
+  ]
+ },
+ {
+  "slug": "logo-a1",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "logo-a1_v1.jpg",
+   "logo-a1_v2.jpg"
+  ]
+ },
+ {
+  "slug": "logo-link",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "logo-link_v1.jpg",
+   "logo-link_v2.jpg"
+  ]
+ },
+ {
+  "slug": "logo-north",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "logo-north_v1.jpg",
+   "logo-north_v2.jpg"
+  ]
+ }
+]

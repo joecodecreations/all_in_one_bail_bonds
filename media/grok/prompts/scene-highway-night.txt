@@ -1,0 +1,5 @@
+Call the image_gen tool exactly 2 time(s), all in the same step, each with aspect_ratio "16:9" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+
+<<<PROMPT
+Cinematic editorial photograph, realistic, natural skin tones, shallow depth of field, subtle film grain, no text, no logos, no watermarks, no police, no handcuffs, no jail. Scene: a North Carolina highway at night with long-exposure gold and white light trails curving through tall pine tree silhouettes under a deep blue sky, wide, atmospheric, lots of dark sky at the top.
+PROMPT>>>

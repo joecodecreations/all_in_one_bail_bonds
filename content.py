@@ -70,7 +70,7 @@ FAQ_MORE = [
 
 def steps_cards():
     return '<div class="grid c3">' + "".join(
-        f'<div class="card"><span class="num">{i}</span><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(STEPS3, 1)) + "</div>"
+        f'<div class="card rv">{tile(["phone", "document", "home"][i - 1])}<h3>{i}. {t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(STEPS3, 1)) + "</div>"
 
 
 def cost_examples():
@@ -84,70 +84,147 @@ def service_ld(name, desc):
 
 
 # ------------------------------------------------------------------ home
+def calc_html(start=5000, count=True, heading="What will a bail bond cost?", track="call-calculator"):
+    chips = "".join(f'<button type="button" data-v="{v}">${v:,}</button>' for v in (1000, 2500, 5000, 10000, 25000, 50000))
+    cnt = f"""<div class="row"><div class="lab"><label for="c-n-{start}">Number of bonds</label><span class="val o-count">1 bond</span></div>
+<input class="r-count" id="c-n-{start}" type="range" min="1" max="5" step="1" value="1" aria-describedby="c-n-help-{start}">
+<div class="ticks" id="c-n-help-{start}"><span>1</span><span>Separate charges can each have a bond</span><span>5</span></div></div>""" if count else ""
+    return f"""<div class="calc" data-calc>
+<h2>{icon("calculator", "", "")}{heading}</h2>
+<div class="row"><div class="lab"><label for="c-a-{start}">Bond amount set by the court</label><output class="o-amount" for="c-a-{start}">${start:,}</output></div>
+<input class="r-amount" id="c-a-{start}" type="range" min="0" max="60" step="1" value="20" data-start="{start}">
+<div class="ticks"><span>$250</span><span>$10,000</span><span>$250,000</span></div>
+<div class="chips" aria-label="Common bond amounts">{chips}</div></div>
+{cnt}
+<div class="result">
+<div><div class="big o-premium">${start * 15 // 100:,}</div><div class="cap">most a bondsman may charge under NC law (15%)</div></div>
+</div>
+<div style="margin-top:16px;font-size:.9rem;color:#cbd7ec">
+<div style="display:flex;justify-content:space-between"><span>Paying the court in cash</span><b class="o-cash" style="color:#fff">${start:,}</b></div>
+<div style="height:10px;border-radius:99px;background:rgba(255,255,255,.12);margin:6px 0 12px"><div class="bar-cash" style="height:100%;width:100%;border-radius:99px;background:#5d7397"></div></div>
+<div style="display:flex;justify-content:space-between"><span>With a bondsman, at most</span><b class="o-premium" style="color:var(--gold)">${start * 15 // 100:,}</b></div>
+<div style="height:10px;border-radius:99px;background:rgba(255,255,255,.12);margin:6px 0 4px"><div class="bar-prem" style="height:100%;width:15%;border-radius:99px;background:var(--gold)"></div></div>
+<div style="color:#9fb1cf;margin-top:8px">Cash you don't have to put up: <b class="o-keep" style="color:#fff">${start * 85 // 100:,}</b></div>
+</div>
+<small class="fine">The legal maximum, not a quote. Larger bonds may also need collateral. Call {PHONE} for the exact cost of your bond.</small>
+{call_btn("btn btn-gold", "Get the exact cost: " + PHONE, track=track)}
+</div>"""
+
+
+FEATURES = [
+    ("clock", "Open 24/7, really", "A licensed bail agent answers at 2 a.m., on weekends and on holidays."),
+    ("star", f"{TOTAL_REVIEWS} five-star reviews", "A 5.0 rating at all three offices, earned one family at a time."),
+    ("pin", "Three local offices", "Raleigh, Durham and Wilson, plus bonds written across North Carolina."),
+    ("money", "Clear about cost", "You hear the premium and any collateral before you sign. Never above the 15% legal cap."),
+    ("chat", "Call or text", "Text if you can't talk freely. We'll answer the same way."),
+    ("shield", "Discreet", "Your family's business stays your family's business."),
+]
+
+
 def home():
     title = "24/7 Bail Bonds in Raleigh, Durham & Wilson NC | All In One"
     desc = f"Fast, discreet bail bonds across North Carolina, open 24/7. Offices in Raleigh, Durham and Wilson. 5.0 stars from {TOTAL_REVIEWS} Google reviews. Call {PHONE}."
     ready = "".join(f"<li>{x}</li>" for x in READY)
-    offices = '<div class="grid c3">' + "".join(office_card(o) for o in OFFICES) + "</div>"
+    feats = '<div class="grid c3 feats">' + "".join(
+        f'<div class="card rv">{tile(i)}<h3>{t}</h3><p>{d}</p></div>' for i, t, d in FEATURES) + "</div>"
+    journey = [("night-call", "The call", "Any hour", "Call or text any hour. Tell us the name and the county; we find the bond and the conditions."),
+               ("signing", "The paperwork", "Before you sign", "You hear the cost before you sign. The cosigner agrees to make sure every court date is kept."),
+               ("reunion", "The ride home", "When the jail releases", "We post the bond at the jail. The jail processes the release, and your family is back together.")]
+    jhtml = '<div class="journey">' + "".join(
+        f'<div class="step rv">{pic(img, alt, sizes="(min-width: 760px) 33vw, 100vw")}<div class="in"><span class="n">{i}</span><span class="t">{when}</span><h3>{t}</h3><p>{d}</p></div></div>'
+        for i, (img, t, when, d) in enumerate(journey, 1)
+        for alt in [{"night-call": "A woman on the phone at her kitchen table late at night",
+                     "signing": "Hands signing a bond agreement at a desk under a lamp",
+                     "reunion": "A young man hugging his mother at sunrise"}[img]]) + "</div>"
+    offices = '<div class="grid c3">' + "".join(f'<div class="rv">{office_card(o)}</div>' for o in OFFICES) + "</div>"
     charges = '<div class="grid c3">' + "".join(
-        f'<a class="card" href="{u(s + "/")}"><h3>{t}</h3><p>{d}</p><span class="more">Learn more →</span></a>' for s, t, d in CHARGES) + \
-        f'<a class="card" href="{u("payment-plans/")}"><h3>Payment arrangements</h3><p>{PAY}. See how they work and what the law requires.</p><span class="more">Learn more →</span></a></div>'
+        f'<a class="card rv" href="{u(s + "/")}">{tile(ic)}<h3>{t}</h3><p>{d}</p><span class="more">Learn more →</span></a>'
+        for (s, t, d), ic in zip(CHARGES, ["car", "scales", "document", "home", "calendar"])) + \
+        f'<a class="card rv" href="{u("payment-plans/")}">{tile("handshake")}<h3>Payment arrangements</h3><p>{PAY}. See how they work and what the law requires.</p><span class="more">Learn more →</span></a></div>'
     body = f"""
-<section class="hero"><div class="wrap hero-grid">
+<section class="hero">
+<div class="hero-media"><video autoplay muted loop playsinline preload="metadata" poster="{u('img/scenes/raleigh-dawn-poster.jpg')}" aria-hidden="true"><source src="{u('video/raleigh-dawn.mp4')}" type="video/mp4"></video></div>
+<div class="wrap hero-grid">
 <div>
-<span class="eyebrow">Open now · 24 hours a day</span>
-<h1>Bail bonds in Raleigh, Durham and Wilson, any hour</h1>
-<p class="lede">When someone you love is in jail, you need a straight answer fast. Call {N} and a licensed North Carolina bail agent tells you what the bond costs and what happens next.</p>
+<span class="live"><i></i>Open now · An agent answers 24/7</span>
+<h1>Bring them <em>home.</em></h1>
+<p class="lede">When someone you love is in jail, you need a straight answer fast. Call {N} and a licensed North Carolina bail agent tells you what the bond costs and what happens next, in Raleigh, Durham, Wilson and across the state.</p>
 <div class="cta">{call_btn(track="call-hero")}{text_btn()}</div>
 <ul class="proof">
-<li><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Google · {TOTAL_REVIEWS} reviews across 3 offices</li>
+<li><span class="stars" aria-hidden="true">★★★★★</span> 5.0 · {TOTAL_REVIEWS} Google reviews</li>
 <li>Licensed NC bail agents</li>
 <li>{PAY}</li>
 </ul>
 </div>
-<div class="hero-card"><h2>Have this ready when you call</h2><ol>{ready}</ol><p style="margin:12px 0 0;color:var(--muted);font-size:.95rem">Don't have all of it? Call anyway. We can usually find the rest.</p></div>
+<div class="glass"><h2>Have this ready when you call</h2><ul class="checks">{ready}</ul><p style="margin:14px 0 0;color:#b9c7de;font-size:.93rem">Don't have all of it? Call anyway. We can usually find the rest.</p></div>
 </div></section>
 
-<section class="section"><div class="wrap">
-<div class="stat-row">
-<div class="card"><div class="stat">{TOTAL_REVIEWS}</div><small>five-star Google reviews</small></div>
-<div class="card"><div class="stat">5.0</div><small>rating at all 3 offices</small></div>
-<div class="card"><div class="stat">3</div><small>offices: Raleigh, Durham, Wilson</small></div>
-<div class="card"><div class="stat">24/7</div><small>a bail agent answers</small></div>
+<section class="section" style="padding-top:0"><div class="wrap">
+<div class="stat-row stat-float">
+<div class="stat rv"><b data-count="{TOTAL_REVIEWS}">{TOTAL_REVIEWS}</b><small>five-star Google reviews</small></div>
+<div class="stat rv"><b data-count="5.0">5.0</b><small>rating at all 3 offices</small></div>
+<div class="stat rv"><b>3</b><small>offices: Raleigh, Durham, Wilson</small></div>
+<div class="stat rv"><b>24/7</b><small>a bail agent answers</small></div>
 </div>
-<p class="sub" style="margin-top:14px;font-size:.9rem">Google review counts as of {S['reviews_as_of']}.</p>
+<p class="sub" style="margin-top:12px;font-size:.85rem">Google review counts as of {S['reviews_as_of']}.</p>
 </div></section>
 
-<section class="section alt"><div class="wrap">
+<section class="section" style="padding-top:10px"><div class="wrap">
 <span class="eyebrow">How it works</span>
-<h2>Three steps from your call to release</h2>
-{steps_cards()}
-<p style="margin-top:18px"><a href="{u('how-bail-works-nc/')}">Read the full guide to how bail works in North Carolina →</a></p>
+<h2>From tonight's phone call to the ride home</h2>
+<p class="sub">Three steps. We handle the parts we can, and we're honest about the parts only the jail controls.</p>
+{jhtml}
+<p style="margin-top:20px"><a href="{u('how-bail-works-nc/')}"><b>Read the full guide to how bail works in North Carolina →</b></a></p>
+</div></section>
+
+<section class="section alt"><div class="wrap two">
+<div class="prose rv">
+<span class="eyebrow">Cost</span>
+<h2>Know the cost before you call</h2>
+<p>North Carolina law caps the bail bond premium at <strong>15% of the bond amount</strong>. A bondsman may ask for collateral on larger bonds, but may not add application or processing fees on top.</p>
+<p>Slide to the bond amount the court set. The calculator shows the most any licensed bondsman in North Carolina is allowed to charge, and how much cash you don't have to put up.</p>
+<p>{PAY}. If part of the premium is paid after release, the schedule goes in a written agreement both sides sign, and you get a copy.</p>
+<p><a class="btn btn-line" href="{u('bail-bond-cost-nc/')}">Full cost guide</a></p>
+</div>
+<div class="rv">{calc_html(5000, count=False, track="call-calculator-home")}</div>
 </div></section>
 
 <section class="section"><div class="wrap">
-<span class="eyebrow">Our offices</span>
+<span class="eyebrow">Why families call us</span>
+<h2>The bondsman who answers</h2>
+{feats}
+</div></section>
+
+<section class="section office-band"><div class="bg">{pic("raleigh", "", sizes="100vw")}</div><div class="wrap">
+<span class="eyebrow" style="color:var(--gold)">Our offices</span>
 <h2>Three offices, one phone call</h2>
-<p class="sub">We write bonds statewide. Most of our work is in the counties around these three offices.</p>
+<p class="sub" style="color:#c6d3e8">We write bonds statewide. Most of our work is in the counties around these three offices.</p>
 {offices}
 </div></section>
 
 <section class="section alt"><div class="wrap">
 <span class="eyebrow">Bonds we post</span>
-<h2>Misdemeanor, felony and DWI bail bonds</h2>
+<h2>Misdemeanor, felony, DWI and more</h2>
 {charges}
 </div></section>
 
-<section class="section"><div class="wrap two">
-<div class="prose">
-<span class="eyebrow">Cost</span>
-<h2>What a bail bond costs in North Carolina</h2>
-<p>State law caps the bail bond premium at <strong>15% of the bond amount</strong>. A bondsman may ask for collateral on larger bonds, but may not add application or processing fees on top of the premium.</p>
-<p>{PAY}. If part of the premium is paid after release, the schedule goes in a written agreement that both sides sign, and you get a copy.</p>
-<p><a class="btn btn-line" href="{u('bail-bond-cost-nc/')}">See the cost calculator</a></p>
-</div>
-<div>{cost_examples()}</div>
+<section class="section dark review-band"><div class="wrap rv">
+<div class="stars" aria-hidden="true">★★★★★</div>
+<div class="big" data-count="{TOTAL_REVIEWS}">{TOTAL_REVIEWS}</div>
+<h2 style="margin-top:6px">five-star reviews on Google</h2>
+<p class="sub" style="margin:0 auto 20px">Every one of our offices holds a 5.0 rating. Read what families wrote, in their own words.</p>
+<div class="reviews-grid">{"".join(f'<a class="card" style="text-decoration:none" href="{maps_url(o["maps_query"])}" rel="noopener"><h3>{o["city"]}</h3><p class="stars" style="margin:0">★★★★★</p><p style="margin:4px 0 0">{o["google_rating"]} · {o["google_reviews"]} reviews <span style="color:var(--gold)">→</span></p></a>' for o in OFFICES)}</div>
 </div></section>
+
+<section class="section"><div class="wrap two flip">
+<div class="figure rv">{pic("desk", "A tidy office desk at night with paperwork, a lamp and a phone")}</div>
+<div class="prose rv">
+<span class="eyebrow">A word from your bondsman</span>
+<h2>Helping every step of the way</h2>
+<p>"I know when a loved one is in jail it is a trying experience, not only for the defendant, but the family as well. Our friendly, knowledgeable staff will be happy to answer any questions you may have. We want to earn your trust, we take pride in the services we provide, and we look forward to handling your jail release needs."</p>
+<p><strong>{AG['name']}</strong><br>{AG['title']}</p>
+<p><a href="{u('about/')}">About {N} →</a></p>
+</div></div></section>
 
 <section class="section alt"><div class="wrap">
 <span class="eyebrow">Where we work</span>
@@ -158,19 +235,10 @@ def home():
 </div></section>
 
 <section class="section"><div class="wrap">
-<span class="eyebrow">A word from your bondsman</span>
-<div class="prose">
-<h2>Helping every step of the way</h2>
-<p>"I know when a loved one is in jail it is a trying experience, not only for the defendant, but the family as well. Our friendly, knowledgeable staff will be happy to answer any questions you may have. We want to earn your trust, we take pride in the services we provide, and we look forward to handling your jail release needs."</p>
-<p><strong>{AG['name']}</strong><br>{AG['title']}</p>
-<p><a href="{u('about/')}">About {N} →</a></p>
-</div></div></section>
-
-<section class="section alt"><div class="wrap">
 <span class="eyebrow">Questions</span>
 <h2>What families ask us first</h2>
 {faq_html(FAQ_CORE)}
-<p style="margin-top:16px"><a href="{u('faq/')}">More questions and answers →</a></p>
+<p style="margin-top:16px"><a href="{u('faq/')}"><b>More questions and answers →</b></a></p>
 </div></section>
 """
     shell("", title, desc, body, ld=[office_ld(o) for o in OFFICES] + [faq_ld(FAQ_CORE)])
@@ -195,7 +263,7 @@ def office_pages():
         guide = {"Wake": "wake-county-jail", "Durham": "durham-county-jail", "Wilson": "wilson-county-jail"}[o["county"]]
         body = page_hero(f'Bail bonds in {o["city"]}, NC',
                          f'A licensed bail agent answers 24 hours a day for {o["city"]} and all of {o["county"]} County. Call {o["phone"]} and we will tell you the cost and the next step.',
-                         f'{o["label"]} · Open 24/7') + f"""
+                         f'{o["label"]} · Open 24/7', bg={"Raleigh": "raleigh", "Durham": "durham", "Wilson": "highway"}[o["city"]], office=o) + f"""
 <section class="section"><div class="wrap two">
 <div class="prose">
 <h2>Your {o["city"]} bail bondsman</h2>
@@ -274,7 +342,7 @@ def county_pages():
         ]
         body = page_hero(f"{n} County bail bonds",
                          f"Is someone you care about being held in {seat}? {N} posts bonds in {n} County 24 hours a day. Call {PHONE} and a licensed NC bail agent will tell you the cost and what happens next.",
-                         f"{seat}, North Carolina · Open 24/7") + f"""
+                         f"{seat}, North Carolina · Open 24/7", bg="highway") + f"""
 <section class="section"><div class="wrap two">
 <div class="prose">
 <h2>Bail bondsman for {seat} and {n} County</h2>
@@ -325,7 +393,7 @@ def service_areas():
             "".join(f'<li><a href="{u(county_slug(c) + "/")}">{c["name"]} County</a></li>' for c in cs) + "</ul></div>"
     body = page_hero("Bail bond locations and counties we serve",
                      f"{N} has offices in Raleigh, Durham and Wilson and writes bonds across North Carolina. Pick a county for the jail address, clerk's phone number and how to post bond there.",
-                     "Serving North Carolina · Open 24/7") + f"""
+                     "Serving North Carolina · Open 24/7", bg="raleigh") + f"""
 <section class="section"><div class="wrap"><div class="grid c3">{groups}</div>
 <p style="margin-top:22px">Don't see your county? North Carolina licenses bail agents to write bonds in every county, and we do. <a href="{TEL}">Call {PHONE}</a> and tell us where the person is being held.</p>
 </div></section>
@@ -340,7 +408,7 @@ def how_bail_works():
     faqs = [FAQ_MORE[0], FAQ_MORE[1], FAQ_MORE[2], FAQ_CORE[5], FAQ_CORE[2]]
     body = page_hero("How bail works in North Carolina",
                      "A plain-language walk through what happens after an arrest in NC: who sets the bond, the kinds of release, what a bail bondsman does and what the cosigner agrees to.",
-                     "Guide · Updated November 2026") + f"""
+                     "Guide · Updated November 2026", bg="signing") + f"""
 <section class="section"><div class="wrap prose">
 <h2>The short version</h2>
 <p>After an arrest, a court official decides the conditions for release until the case is over. If the condition is a <strong>secured bond</strong>, money or property has to back it. A licensed bail bondsman can post that bond for a fee called the premium, which North Carolina caps at 15% of the bond amount. The person is released and must go to every court date.</p>
@@ -385,8 +453,8 @@ def cost():
             ("What is collateral, and when do I get it back?", "Collateral is property or money pledged to protect the bondsman if the defendant does not go to court. Not every bond needs it. The bondsman must give you a written receipt describing it and must return it within 15 days after liability on the bond finally ends."),
             ("If the judge lowers the bond later, do I get part of the premium back?", "No. North Carolina law says the surety is not required to return any portion of the premium when a bond is reduced after it has been posted.")]
     body = page_hero("How much does a bail bond cost in North Carolina?",
-                     "State law caps the bail bond premium at 15% of the bond amount. Enter a bond amount to see the most a bondsman can charge, then call us for the exact cost.",
-                     "Cost guide") + f"""
+                     "State law caps the bail bond premium at 15% of the bond amount. Slide to your bond amount to see the most a bondsman can charge, then call us for the exact cost.",
+                     "Cost guide · NC 15% cap", bg="desk") + f"""
 <section class="section"><div class="wrap two">
 <div class="prose">
 <h2>The 15% rule</h2>
@@ -401,15 +469,7 @@ def cost():
 </ul>
 </div>
 <div>
-<div class="calc">
-<h2 style="font-size:1.25rem">Bail bond cost calculator</h2>
-<label for="bond-amount">Bond amount set by the court</label>
-<input id="bond-amount" inputmode="decimal" placeholder="$5,000" value="5000" aria-describedby="calc-note">
-<p style="margin:16px 0 0;font-weight:700;color:var(--ink)">Maximum premium allowed by NC law</p>
-<output id="bond-max" for="bond-amount">$750</output>
-<small id="calc-note">This is the legal maximum (15%), not a quote. Call {PHONE} for the exact cost of your bond.</small>
-<div style="margin-top:14px">{call_btn("btn btn-red", "Call for an exact quote", track="call-calculator")}</div>
-</div>
+<div class="sticky">{calc_html(5000, count=True, heading="Bail bond cost calculator")}</div>
 </div>
 </div></section>
 <section class="section alt"><div class="wrap">
@@ -430,7 +490,7 @@ def payment_plans():
             ("What happens if a payment is missed?", "Call us before the due date if you see a problem coming. Staying in touch matters. Under NC law, willfully failing to pay the agreed premium is one of the reasons a bondsman is allowed to surrender a defendant back to custody.")]
     body = page_hero("Bail bond payment arrangements",
                      f"{PAY}. Here is how they work in North Carolina and what the law requires, so there are no surprises.",
-                     "Payments") + f"""
+                     "Payments", bg="signing") + f"""
 <section class="section"><div class="wrap prose">
 <h2>How a payment arrangement works</h2>
 <p>If you cannot pay the whole premium at once, ask us about a payment arrangement when you call. If one is available for your bond, part of the premium is paid up front and the rest on a schedule you agree to.</p>
@@ -442,7 +502,7 @@ def payment_plans():
 <li>Honest information about the charge and any earlier missed court dates</li>
 <li>Payments on the dates in the agreement, and a call if something changes</li>
 </ul>
-<p>{call_btn("btn btn-red", "Ask about payment options", track="call-payments")}</p>
+<p>{call_btn("btn btn-gold", "Ask about payment options", track="call-payments")}</p>
 <h2>Payment questions</h2>
 {faq_html(faqs)}
 <p class="note gov">General information, not legal advice. Statutes referenced: N.C. Gen. Stat. §§ 58-71-167 and 58-71-20.</p>
@@ -455,6 +515,7 @@ def payment_plans():
 
 CHARGE_COPY = {
     "dwi-bail-bonds": {
+        "bg": "highway",
         "h1": "DWI and DUI bail bonds in North Carolina",
         "title": "DWI / DUI Bail Bonds in NC | All In One Bail Bonds",
         "desc": f"Arrested for DWI in Raleigh, Durham or Wilson? What happens at the magistrate, how the bond is set and how to get released. Call {PHONE}, 24/7.",
@@ -469,6 +530,7 @@ CHARGE_COPY = {
                  FAQ_CORE[0], FAQ_CORE[4]],
     },
     "felony-bail-bonds": {
+        "bg": "desk",
         "h1": "Felony bail bonds in North Carolina",
         "title": "Felony Bail Bonds in NC | All In One Bail Bonds",
         "desc": f"Felony bonds are larger and some must be set by a judge. How felony bail works in NC since the 2023 and 2025 law changes. Call {PHONE}, 24/7.",
@@ -483,6 +545,7 @@ CHARGE_COPY = {
                  FAQ_CORE[0], FAQ_CORE[3]],
     },
     "misdemeanor-bail-bonds": {
+        "bg": "night-call",
         "h1": "Misdemeanor bail bonds in North Carolina",
         "title": "Misdemeanor Bail Bonds in NC | All In One Bail Bonds",
         "desc": f"Fast help with misdemeanor bonds in Wake, Durham and Wilson counties. What they cost under NC's 15% cap and how to post one. Call {PHONE}, 24/7.",
@@ -496,6 +559,7 @@ CHARGE_COPY = {
                  FAQ_MORE[4], FAQ_CORE[4]],
     },
     "domestic-violence-bail-bonds": {
+        "bg": "night-call",
         "h1": "Domestic violence bail bonds in North Carolina",
         "title": "Domestic Violence Bonds NC: 48-Hour Rule | All In One",
         "desc": f"In NC a judge, not a magistrate, sets release conditions in domestic violence cases, which can mean a wait of up to 48 hours. Call {PHONE}, 24/7.",
@@ -510,6 +574,7 @@ CHARGE_COPY = {
                  FAQ_CORE[0]],
     },
     "failure-to-appear-bonds": {
+        "bg": "desk",
         "h1": "Missed court? Bonds after a failure to appear",
         "title": "Missed Court in NC? Failure to Appear Bonds | All In One",
         "desc": f"Missed a court date in North Carolina? What an order for arrest means, what happens to the bond and how to handle it. Call {PHONE}, 24/7.",
@@ -530,13 +595,13 @@ def charge_pages():
     for slug, name, _ in CHARGES:
         c = CHARGE_COPY[slug]
         secs = "".join(f"<h2>{h}</h2><p>{p}</p>" for h, p in c["sections"])
-        body = page_hero(c["h1"], c["lede"], "Open 24/7") + f"""
+        body = page_hero(c["h1"], c["lede"], "Open 24/7", bg=c.get("bg", "night-call")) + f"""
 <section class="section"><div class="wrap two">
 <div class="prose">{secs}
 <h2>What it costs</h2>
 <p>North Carolina caps the bail bond premium at 15% of the bond amount. {PAY}. <a href="{u('bail-bond-cost-nc/')}">See the cost calculator</a>.</p>
 </div>
-<div><div class="card"><h3>Have this ready when you call</h3><ol>{"".join(f"<li>{x}</li>" for x in READY)}</ol>{call_btn("btn btn-red", track="call-" + slug)}</div></div>
+<div><div class="card"><h3>Have this ready when you call</h3><ol>{"".join(f"<li>{x}</li>" for x in READY)}</ol>{call_btn("btn btn-gold", track="call-" + slug)}</div></div>
 </div></section>
 <section class="section alt"><div class="wrap">
 <h2>Questions</h2>
@@ -570,7 +635,7 @@ def jail_guides():
         ]
         body = page_hero(f"How to bail someone out of the {n} County jail",
                          f"A step-by-step guide for families: how to confirm someone is in the {j['name']}, find the bond amount and get the bond posted.",
-                         f"Jail guide · {j['city']}, NC") + f"""
+                         f"Jail guide · {j['city']}, NC", bg="highway") + f"""
 <section class="section"><div class="wrap two">
 <div class="prose">
 {GOV_NOTE}
@@ -597,7 +662,7 @@ def jail_guides():
 <tr><th>Victim notification</th><td><a href="{STATE['vinelink']['url']}" rel="noopener nofollow">VINELink North Carolina</a></td></tr>
 <tr><th>More on this county</th><td><a href="{u(county_slug(c) + '/')}">{n} County bail bonds</a></td></tr>
 </table>
-<div class="card" style="margin-top:16px"><h3>Need help right now?</h3><p>We answer 24 hours a day.</p>{call_btn("btn btn-red", track="call-jail-" + n.lower())}</div>
+<div class="card" style="margin-top:16px"><h3>Need help right now?</h3><p>We answer 24 hours a day.</p>{call_btn("btn btn-gold", track="call-jail-" + n.lower())}</div>
 </div>
 </div></section>
 <section class="section alt"><div class="wrap"><h2>{n} County jail questions</h2>{faq_html(faqs)}</div></section>
@@ -609,7 +674,7 @@ def jail_guides():
 
 def faq_page():
     faqs = FAQ_CORE + FAQ_MORE
-    body = page_hero("Bail bond questions and answers", "Straight answers to what families ask us most, written for North Carolina.", "FAQ") + f"""
+    body = page_hero("Bail bond questions and answers", "Straight answers to what families ask us most, written for North Carolina.", "FAQ", bg="night-call") + f"""
 <section class="section"><div class="wrap prose">{faq_html(faqs)}
 <p class="note gov">General information, not legal advice. For advice about a specific case, talk to a licensed attorney.</p></div></section>
 """
@@ -624,7 +689,7 @@ def reviews():
         f'<div class="acts"><a class="btn btn-line btn-sm" href="{maps_url(o["maps_query"])}" rel="noopener">Read {o["city"]} reviews on Google</a></div></div>' for o in OFFICES)
     body = page_hero(f"{TOTAL_REVIEWS} five-star Google reviews",
                      f"Every one of our three offices holds a 5.0 rating on Google. Counts are as of {S['reviews_as_of']}; follow the links to read what families wrote in their own words.",
-                     "Reviews") + f"""
+                     "Reviews", bg="reunion") + f"""
 <section class="section"><div class="wrap">
 <div class="grid c3">{cards}</div>
 <div class="prose" style="margin-top:28px">
@@ -641,7 +706,7 @@ def about():
     lic = f"<tr><th>NC license</th><td>#{e(AG['license_number'])}</td></tr>" if AG["license_number"] else ""
     person = {"@type": "Person", "@id": absu("about/#agent"), "name": AG["name"], "jobTitle": "Bail agent",
               "worksFor": {"@id": absu("#org")}, "url": absu("about/")}
-    body = page_hero(f"About {N}", "A North Carolina bail bond agency with three offices and one promise: a real person answers, day or night.", "About us") + f"""
+    body = page_hero(f"About {N}", "A North Carolina bail bond agency with three offices and one promise: a real person answers, day or night.", "About us", bg="desk") + f"""
 <section class="section"><div class="wrap two">
 <div class="prose">
 <h2>Helping every step of the way</h2>
@@ -666,7 +731,7 @@ def about():
 <tr><th>Google rating</th><td>5.0 from {TOTAL_REVIEWS} reviews ({S['reviews_as_of']})</td></tr>
 <tr><th>Regulator</th><td><a href="{STATE['ncdoi_bail']['url']}" rel="noopener nofollow">NC Department of Insurance, Bail Bond Regulatory Division</a></td></tr>
 </table>
-<p style="margin-top:16px"><img src="{u('img/logo-512.png')}" width="260" height="260" alt="All In One Bail Bonds logo" loading="lazy" style="border-radius:50%;margin:0 auto"></p>
+<div class="figure" style="margin-top:16px">{pic("desk", "The All In One Bail Bonds desk, ready at night")}</div>
 </div>
 </div></section>
 """
@@ -689,13 +754,13 @@ def form_html(lang="en"):
 <label for="f-county">{t("Jail or county", "Cárcel o condado")}</label><select id="f-county" name="county"><option value="">{t("Not sure", "No estoy seguro")}</option>{counties}<option>{t("Another NC county", "Otro condado de NC")}</option></select>
 <label for="f-amt">{t("Bond amount, if known", "Monto de la fianza, si lo sabe")}</label><input id="f-amt" name="amount" inputmode="decimal">
 <label for="f-notes">{t("Anything else we should know", "Algo más que debamos saber")}</label><textarea id="f-notes" name="notes"></textarea>
-<button class="btn btn-red" type="submit">{t("Send request by email", "Enviar por correo")}</button>
+<button class="btn btn-gold" type="submit">{t("Send request by email", "Enviar por correo")}</button>
 {sms}
 </form>"""
 
 
 def contact():
-    body = page_hero("Contact All In One Bail Bonds", f"The fastest way to reach us is to call {PHONE}. A licensed bail agent answers 24 hours a day.", "Contact · Open 24/7") + f"""
+    body = page_hero("Contact All In One Bail Bonds", f"The fastest way to reach us is to call {PHONE}. A licensed bail agent answers 24 hours a day.", "Contact · Open 24/7", bg="night-call") + f"""
 <section class="section"><div class="wrap two">
 <div>
 <div class="grid">{"".join(office_card(o) for o in OFFICES)}</div>
@@ -723,13 +788,13 @@ def fianzas():
              ("Le explicamos el costo", "Le decimos la prima y si hace falta garantía antes de que firme cualquier documento."),
              ("Presentamos la fianza", "Un agente con licencia presenta la fianza en la cárcel, y la cárcel procesa la salida.")]
     body = f"""
-<section class="page-hero"><div class="wrap">{{{{CRUMBS}}}}<span class="eyebrow">Abierto 24 horas</span><br>
+<section class="page-hero has-bg"><div class="bg">{pic("reunion", "", eager=True, sizes="100vw")}</div><div class="wrap">{{{{CRUMBS}}}}<span class="live"><i></i>Abierto 24 horas</span>
 <h1>Fianzas en Raleigh, Durham y Wilson, Carolina del Norte</h1>
 <p class="lede">Cuando un ser querido está en la cárcel, usted necesita una respuesta clara y rápida. Llame a {N} a cualquier hora y un agente de fianzas con licencia le explica el costo y los pasos a seguir.</p>
 <div class="cta">{call_btn(label="Llame al " + PHONE, track="call-es")}{text_btn(label="Envíe un mensaje")}</div></div></section>
 <section class="section"><div class="wrap">
 <h2>Cómo funciona</h2>
-<div class="grid c3">{"".join(f'<div class="card"><span class="num">{i}</span><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(steps, 1))}</div>
+<div class="grid c3">{"".join(f'<div class="card rv">{tile(["phone", "money", "home"][i - 1])}<h3>{i}. {t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(steps, 1))}</div>
 </div></section>
 <section class="section alt"><div class="wrap two">
 <div class="prose">

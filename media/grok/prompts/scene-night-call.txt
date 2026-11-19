@@ -1,0 +1,5 @@
+Call the image_gen tool exactly 2 time(s), all in the same step, each with aspect_ratio "16:9" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+
+<<<PROMPT
+Cinematic editorial photograph, realistic, natural skin tones, shallow depth of field, subtle film grain, no text, no logos, no watermarks, no police, no handcuffs, no jail. Scene: a worried woman in her forties sits at her kitchen table late at night, phone pressed to her ear, lit warmly by a single pendant lamp and the glow of the phone, the rest of the room in deep shadow with a faint cool blue accent light, she looks hopeful, framed off-center to the right leaving dark empty space on the left.
+PROMPT>>>

@@ -1,0 +1,5 @@
+Call the image_gen tool exactly 2 time(s), all in the same step, each with aspect_ratio "1:1" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+
+<<<PROMPT
+A flat vector logo symbol for a trustworthy family-owned bail bond agency, deep navy blue (#14305E) and warm gold (#F2B33D) only, bold simple geometric shapes, works at small sizes, centered on a pure plain white background, generous margin. No text, no words, no letters except where asked, no handcuffs, no bars, no badge, no shield, no police or government symbols. The symbol: a compass star whose north point is a tiny house, meaning guidance home.
+PROMPT>>>

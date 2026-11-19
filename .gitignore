@@ -1,3 +1,6 @@
 shots/
 __pycache__/
 .DS_Store
+media/envato/*.mov
+media/envato/*.mp4
+media/envato/*.jpg

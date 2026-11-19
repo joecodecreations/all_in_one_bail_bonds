@@ -1,0 +1,5 @@
+Call the image_gen tool exactly 2 time(s), all in the same step, each with aspect_ratio "16:9" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+
+<<<PROMPT
+Cinematic editorial photograph, realistic, natural skin tones, shallow depth of field, subtle film grain, no text, no logos, no watermarks, no police, no handcuffs, no jail. Scene: early morning, golden sunrise light, a young man hugs his relieved mother tightly in a quiet parking lot beside a car, faces partly turned away from the camera, emotional and warm, North Carolina pine trees in the background.
+PROMPT>>>
