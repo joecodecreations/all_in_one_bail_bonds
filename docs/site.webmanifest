@@ -1,0 +1,20 @@
+{
+ "name": "All In One Bail Bonds",
+ "short_name": "All In One Bail",
+ "start_url": "/all_in_one_bail_bonds/",
+ "display": "browser",
+ "background_color": "#0F0F12",
+ "theme_color": "#0F0F12",
+ "icons": [
+  {
+   "src": "/all_in_one_bail_bonds/img/logo-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/all_in_one_bail_bonds/img/logo-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

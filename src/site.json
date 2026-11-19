@@ -1,0 +1,87 @@
+{
+  "_readme": "Every business fact on the site comes from this file. Change it here, run `python3 build.py`, and every page, the structured data, llms.txt and the sitemap update together. Items marked CONFIRM are working assumptions the owner has not approved yet.",
+  "preview": true,
+  "base_url": "https://joecodecreations.github.io/all_in_one_bail_bonds",
+  "live_base_url": "https://allinonebailbonds.org",
+  "name": "All In One Bail Bonds",
+  "legal_name": "All In One Bail Bonds",
+  "tagline": "Always available",
+  "agent": {
+    "name": "Zakee Bodhi Cromartie",
+    "short": "Zakee Cromartie",
+    "title": "North Carolina licensed bail agent",
+    "license_number": "",
+    "_license_note": "CONFIRM: add the NCDOI license number; it prints on the About page and footer when filled in."
+  },
+  "phone": "(919) 247-9397",
+  "phone_e164": "+19192479397",
+  "sms_enabled": true,
+  "_sms_note": "CONFIRM: can (919) 247-9397 receive text messages? If not, set sms_enabled to false and the Text buttons disappear.",
+  "email": "allinonebailbonds@gmail.com",
+  "hours": "Open 24 hours a day, 7 days a week, including holidays",
+  "payment_line": "We accept some payment arrangements",
+  "_payment_note": "Wording is the business's own flyer. CONFIRM the accepted payment methods (cash, card, Cash App, Zelle?) before listing them.",
+  "payment_methods": [],
+  "spanish_enabled": true,
+  "_spanish_note": "CONFIRM: is there a Spanish-speaking agent? If not, set spanish_enabled to false and the /fianzas/ page and its links are not built.",
+  "reviews_as_of": "November 19, 2026",
+  "social": {
+    "instagram": "https://instagram.com/allinonebailbonds",
+    "facebook": "",
+    "x": "",
+    "_note": "Facebook link on the old site appears broken and the X account shows fugitive reward posts; both are left off until the owner decides."
+  },
+  "offices": [
+    {
+      "slug": "bail-bonds-raleigh-nc",
+      "city": "Raleigh",
+      "county": "Wake",
+      "label": "Raleigh office",
+      "street": "6104 Westgate Road, Suite 110",
+      "locality": "Raleigh",
+      "zip": "27617",
+      "phone": "(919) 247-9397",
+      "phone_e164": "+19192479397",
+      "google_reviews": 295,
+      "google_rating": "5.0",
+      "maps_query": "All in One Bail Bonds 6104 Westgate Rd Raleigh NC",
+      "area_note": "Near Brier Creek and RDU, off Glenwood Avenue (US-70)."
+    },
+    {
+      "slug": "bail-bonds-durham-nc",
+      "city": "Durham",
+      "county": "Durham",
+      "label": "Durham office",
+      "street": "3326 Guess Road, Suite 201",
+      "locality": "Durham",
+      "zip": "27705",
+      "phone": "(919) 247-9397",
+      "phone_e164": "+19192479397",
+      "google_reviews": 156,
+      "google_rating": "5.0",
+      "maps_query": "All in One Bail Bonds 3326 Guess Rd Durham NC",
+      "area_note": "On Guess Road in north Durham, a short drive from I-85."
+    },
+    {
+      "slug": "bail-bonds-wilson-nc",
+      "city": "Wilson",
+      "county": "Wilson",
+      "label": "Wilson office",
+      "street": "2509 Nash Street N, Suite B9",
+      "locality": "Wilson",
+      "zip": "27896",
+      "_address_note": "CONFIRM: the old website says Suite B / 27893; the Google Business Profile and Facebook say B9 / 27896. This site follows Google.",
+      "phone": "(252) 373-0538",
+      "phone_e164": "+12523730538",
+      "google_reviews": 43,
+      "google_rating": "5.0",
+      "maps_query": "All in One Bail Bonds 2509 Nash St N Wilson NC",
+      "area_note": "On Nash Street N in northwest Wilson."
+    }
+  ],
+  "county_office": {
+    "Wake": "Raleigh", "Johnston": "Raleigh", "Harnett": "Raleigh", "Lee": "Raleigh", "Franklin": "Raleigh", "Vance": "Raleigh", "Sampson": "Raleigh",
+    "Durham": "Durham", "Orange": "Durham", "Person": "Durham", "Granville": "Durham", "Alamance": "Durham", "Guilford": "Durham", "Chatham": "Durham",
+    "Wilson": "Wilson", "Nash": "Wilson", "Pitt": "Wilson", "Wayne": "Wilson"
+  }
+}
