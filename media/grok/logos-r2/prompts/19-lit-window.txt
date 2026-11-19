@@ -1,0 +1,5 @@
+Call the image_gen tool exactly 1 time(s), all in the same step, each with aspect_ratio "1:1" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+
+<<<PROMPT
+A professional, original logo for a North Carolina bail bond company. The company name must appear spelled exactly "All In One Bail Bonds" (four words: All In One, then Bail Bonds), crisp and legible, correctly spelled. Clean flat vector style, centered on a plain white background, generous margin, print-ready, no mockup, no paper texture. Absolutely no handcuffs, no jail bars, no police badge, no shield, no sheriff star, no seal, no gavel, no doorway. Concept: a small house at night with one warm lit window, meaning someone is waiting for you, navy and warm yellow, company name below.
+PROMPT>>>

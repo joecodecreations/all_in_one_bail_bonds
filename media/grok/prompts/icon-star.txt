@@ -1,5 +1,5 @@
-Call the image_gen tool exactly 2 time(s), all in the same step, each with aspect_ratio "1:1" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
+Call the image_gen tool exactly 1 time(s), all in the same step, each with aspect_ratio "1:1" and with the prompt set to exactly the text between the markers below, copied character for character. Do not call any other tool. When done, reply with just the word done.
 
 <<<PROMPT
-A single 3D icon in a soft, glossy clay style, colored deep navy blue (#14305E) and warm gold (#F2B33D) with small white highlights, centered on a pure plain white background, soft studio lighting, a gentle soft shadow beneath it, generous empty margin around it. No text, no letters, no numbers, no border, no frame. Minimal, premium, friendly, consistent app-icon quality. The object: a five-point star with three small sparkles around it.
+A single 3D icon in a soft, glossy clay style, colored deep navy blue (#0B2559) and bright azure blue (#1E6FF0) with small white highlights, centered on a pure plain white background, soft studio lighting, a gentle soft shadow beneath it, generous empty margin around it. No text, no letters, no numbers, no border, no frame. Minimal, premium, friendly, consistent app-icon quality. The object: a five-point star with three small sparkles around it.
 PROMPT>>>

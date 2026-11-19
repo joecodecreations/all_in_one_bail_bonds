@@ -1,12 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="All In One Bail Bonds">
-  <defs>
-    <linearGradient id="aio-glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE7A8"/><stop offset=".55" stop-color="#F2B33D"/><stop offset="1" stop-color="#E08E12"/></linearGradient>
-    <linearGradient id="aio-path" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6DB"/><stop offset="1" stop-color="#F2B33D" stop-opacity=".25"/></linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="#0E2547"/>
-  <path d="M15 52V29a17 17 0 0 1 34 0v23" fill="none" stroke="#F2B33D" stroke-width="5" stroke-linecap="round"/>
-  <path d="M23.5 52V30a8.5 8.5 0 0 1 17 0v22z" fill="url(#aio-glow)"/>
-  <path d="M40.5 30.5l4.2-2.6v21.6l-4.2 2.5z" fill="#FFFFFF" opacity=".92"/>
-  <path d="M29 52l1.6-12h2.8L35 52z" fill="url(#aio-path)"/>
-  <path d="M10 52.5h44" stroke="#F2B33D" stroke-width="3" stroke-linecap="round"/>
+  <rect width="64" height="64" rx="15" fill="#FFFFFF"/>
+  <path d="M46.5 12.6A24 24 0 1 0 54.2 22.4" fill="none" stroke="#0B2559" stroke-width="3.4" stroke-linecap="round"/>
+  <g stroke="#0B2559" stroke-linecap="round">
+    <path d="M32 11.5v4.6M32 47.9v4.6M11.5 32h4.6M47.9 32h4.6" stroke-width="2.6"/>
+    <path d="M21.8 14.3l1.7 2.9M42.2 14.3l-1.7 2.9M14.3 21.8l2.9 1.7M14.3 42.2l2.9-1.7M49.7 42.2l-2.9-1.7M21.8 49.7l1.7-2.9M42.2 49.7l-1.7-2.9" stroke-width="1.8"/>
+  </g>
+  <path d="M21.5 31.5l8 8.2" fill="none" stroke="#0B2559" stroke-width="5" stroke-linecap="round"/>
+  <path d="M29.5 39.7L50.5 15" fill="none" stroke="#1E6FF0" stroke-width="5" stroke-linecap="round"/>
 </svg>

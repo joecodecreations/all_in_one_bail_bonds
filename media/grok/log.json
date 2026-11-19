@@ -230,5 +230,117 @@
    "logo-north_v1.jpg",
    "logo-north_v2.jpg"
   ]
+ },
+ {
+  "slug": "icon-phone",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "icon-phone_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-clock",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "icon-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-document",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "icon-document_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-calculator",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "icon-calculator_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-shield",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "icon-shield_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-pin",
+  "exit": 0,
+  "secs": 22,
+  "files": [
+   "icon-pin_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-chat",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "icon-chat_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-home-heart",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "icon-home-heart_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-handshake",
+  "exit": 0,
+  "secs": 16,
+  "files": [
+   "icon-handshake_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-star",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "icon-star_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-calendar",
+  "exit": 0,
+  "secs": 16,
+  "files": [
+   "icon-calendar_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-car",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "icon-car_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-scales",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "icon-scales_v1.jpg"
+  ]
+ },
+ {
+  "slug": "icon-money",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "icon-money_v1.jpg"
+  ]
  }
 ]

@@ -7,10 +7,10 @@ from PIL import Image
 from scipy import ndimage as ndi
 ROOT = Path(__file__).resolve().parent.parent
 G, E, IMG, VID = ROOT / "media/grok", ROOT / "media/envato", ROOT / "src/img", ROOT / "src/video"
-ICONS = {"phone": "icon-phone_v2", "clock": "icon-clock_v2", "document": "icon-document_v2", "calculator": "icon-calculator_v2",
-         "shield": "icon-shield_v2", "pin": "icon-pin_v1", "chat": "icon-chat_v1", "home": "icon-home-heart_v2",
-         "handshake": "icon-handshake_v2", "star": "icon-star_v1", "calendar": "icon-calendar_v2", "car": "icon-car_v2",
-         "scales": "icon-scales_v2", "money": "icon-money_v2"}
+ICONS = {"phone": "icon-phone_v1", "clock": "icon-clock_v1", "document": "icon-document_v1", "calculator": "icon-calculator_v1",
+         "shield": "icon-shield_v1", "pin": "icon-pin_v1", "chat": "icon-chat_v1", "home": "icon-home-heart_v1",
+         "handshake": "icon-handshake_v1", "star": "icon-star_v1", "calendar": "icon-calendar_v1", "car": "icon-car_v1",
+         "scales": "icon-scales_v1", "money": "icon-money_v1"}
 SCENES = {"night-call": (G / "scene-night-call_v1.jpg", None), "signing": (G / "scene-signing_v2.jpg", None),
           "desk": (G / "scene-agent-desk_v2.jpg", None), "reunion": (G / "scene-reunion_v2.jpg", None),
           "highway": (G / "scene-highway-night_v1.jpg", None),

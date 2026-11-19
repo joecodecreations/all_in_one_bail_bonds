@@ -17,7 +17,7 @@ SESS = Path.home() / ".grok" / "sessions" / urllib.parse.quote(str(OUT), safe=""
 RULES = ("This is a scripted image-generation job. Use only the image_gen tool. "
          "Do not run trackers (orbital-track), do not search for or call MCP tools, do not spawn agents.")
 
-ICON = ("A single 3D icon in a soft, glossy clay style, colored deep navy blue (#14305E) and warm gold (#F2B33D) with small "
+ICON = ("A single 3D icon in a soft, glossy clay style, colored deep navy blue (#0B2559) and bright azure blue (#1E6FF0) with small "
         "white highlights, centered on a pure plain white background, soft studio lighting, a gentle soft shadow "
         "beneath it, generous empty margin around it. No text, no letters, no numbers, no border, no frame. "
         "Minimal, premium, friendly, consistent app-icon quality. The object: ")
@@ -33,7 +33,7 @@ JOBS = {
  "icon-calculator": ("1:1", ICON + "a chunky calculator with blank rounded keys."),
  "icon-shield": ("1:1", ICON + "a rounded shield with a bold check mark on it."),
  "icon-pin": ("1:1", ICON + "a map location pin standing on a small folded map."),
- "icon-chat": ("1:1", ICON + "two overlapping speech bubbles, one navy and one gold, with three dots in one of them."),
+ "icon-chat": ("1:1", ICON + "two overlapping speech bubbles, one navy and one bright blue, with three dots in one of them."),
  "icon-home-heart": ("1:1", ICON + "a small house with a heart on its front, meaning family and home."),
  "icon-handshake": ("1:1", ICON + "two hands in a firm handshake."),
  "icon-star": ("1:1", ICON + "a five-point star with three small sparkles around it."),

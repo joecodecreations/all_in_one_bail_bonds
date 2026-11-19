@@ -23,11 +23,11 @@ big.resize((64, 64), Image.LANCZOS).save(SRC / "favicon.ico", sizes=[(16, 16), (
 render(f'''<style>@font-face{{font-family:J;src:url({FONT})}}*{{margin:0}}body{{width:1200px;height:630px;font-family:J,Helvetica;color:#fff;
 background:linear-gradient(90deg,rgba(6,17,31,.96) 35%,rgba(6,17,31,.45)),url({SCENE}) center/cover;position:relative}}
 .k{{position:absolute;left:80px;top:78px;display:flex;align-items:center;gap:22px}}.k b{{font-size:44px;font-weight:800;letter-spacing:-1px;display:block}}
-.k small{{display:block;color:#F2B33D;font-weight:700;font-size:17px;letter-spacing:8px;margin-top:6px}}
-h1{{position:absolute;left:80px;top:230px;font-size:84px;font-weight:800;letter-spacing:-3px;line-height:1}}h1 em{{font-style:normal;color:#F2B33D}}
-p{{position:absolute;left:80px;top:350px;font-size:30px;color:#d6e0f0}}.ph{{position:absolute;left:80px;top:440px;background:#F2B33D;color:#06111F;font-weight:800;font-size:40px;padding:18px 34px;border-radius:18px}}
-.r{{position:absolute;left:520px;top:458px;font-size:26px;color:#d6e0f0}}.r i{{color:#F2B33D;font-style:normal;letter-spacing:3px}}</style>
-<div class="k"><img src="{MARK}" width="96" height="96"><div><b>All In One</b><small>BAIL BONDS</small></div></div>
+.k i{{display:block;font-style:normal;color:#5C9BFF;font-weight:800;font-size:44px;letter-spacing:-1px;margin-top:2px}}
+h1{{position:absolute;left:80px;top:250px;font-size:84px;font-weight:800;letter-spacing:-3px;line-height:1}}h1 em{{font-style:normal;color:#5C9BFF}}
+p{{position:absolute;left:80px;top:362px;font-size:30px;color:#d6e0f0}}.ph{{position:absolute;left:80px;top:440px;background:#1E6FF0;color:#fff;font-weight:800;font-size:40px;padding:18px 34px;border-radius:18px}}
+.r{{position:absolute;left:520px;top:458px;font-size:26px;color:#d6e0f0}}.r i{{color:#F5B301;font-style:normal;letter-spacing:3px}}</style>
+<div class="k"><img src="{MARK}" width="96" height="96"><div><b>All In One</b><i>Bail Bonds</i></div></div>
 <h1>Bring them <em>home.</em></h1><p>24/7 bail bonds · Raleigh · Durham · Wilson, NC</p>
 <div class="ph">(919) 247-9397</div><div class="r"><i>★★★★★</i> 5.0 · 494 Google reviews</div>''', IMG / "og.png", 1200, 630)
 print("brand images ok")

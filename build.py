@@ -198,7 +198,7 @@ def shell(path, title, desc, body, crumbs=None, ld=None, lang="en", hero=""):
 <a class="skip" href="#main">Skip to content</a>
 {ribbon}
 <header class="site"><div class="wrap">
-<a class="brand" href="{u('')}" aria-label="All In One Bail Bonds, home">{MARK}<span><b>All In One</b><small>BAIL BONDS</small></span></a>
+<a class="brand" href="{u('')}" aria-label="All In One Bail Bonds, home">{MARK}<span><b>All In One</b><i>Bail Bonds</i></span></a>
 <nav class="main" aria-label="Main">{nav}</nav>
 <div class="hdr-cta">{call_btn("btn btn-gold btn-sm", '<span class="lbl">Call </span>24/7', track="call-header")}<button class="menu-btn" aria-expanded="false" aria-controls="drawer" aria-label="Menu">{MENU_ICON}</button></div>
 </div><nav class="drawer" id="drawer" aria-label="Mobile">{drawer}</nav></header>
@@ -207,7 +207,7 @@ def shell(path, title, desc, body, crumbs=None, ld=None, lang="en", hero=""):
 <section class="band"><div class="bg">{pic("highway", "")}</div><div class="wrap rv"><span class="live"><i></i>An agent is available now</span><h2 style="margin-top:12px">We answer. Any hour.</h2><p>A licensed bail agent answers 24 hours a day, every day. Have the person's full name and the county ready if you can.</p><div class="cta">{call_btn(track="call-band")}{text_btn("btn btn-glass", "Text " + PHONE)}</div></div></section>
 </main>
 <footer class="site"><div class="wrap"><div class="fgrid">
-<div><a class="brand" href="{u('')}" style="margin-bottom:14px"><img src="{u('brand/mark.svg')}" width="44" height="44" alt=""><span><b>All In One</b><small>BAIL BONDS</small></span></a><p>24-hour bail bond service across North Carolina, with offices in Raleigh, Durham and Wilson.</p><p><a href="{TEL}"><strong>{PHONE}</strong></a><br><a href="mailto:{S['email']}">{S['email']}</a></p></div>
+<div><a class="brand" href="{u('')}" style="margin-bottom:14px"><img src="{u('brand/mark.svg')}" width="44" height="44" alt=""><span><b>All In One</b><i>Bail Bonds</i></span></a><p>24-hour bail bond service across North Carolina, with offices in Raleigh, Durham and Wilson.</p><p><a href="{TEL}"><strong>{PHONE}</strong></a><br><a href="mailto:{S['email']}">{S['email']}</a></p></div>
 <div><h3>Offices</h3><ul>{offices_f}</ul></div>
 <div><h3>Bail bonds</h3><ul><li><a href="{u('dwi-bail-bonds/')}">DWI / DUI bonds</a></li><li><a href="{u('felony-bail-bonds/')}">Felony bonds</a></li><li><a href="{u('misdemeanor-bail-bonds/')}">Misdemeanor bonds</a></li><li><a href="{u('domestic-violence-bail-bonds/')}">Domestic violence bonds</a></li><li><a href="{u('failure-to-appear-bonds/')}">Missed court / failure to appear</a></li><li><a href="{u('payment-plans/')}">Payment arrangements</a></li></ul></div>
 <div><h3>Help</h3><ul><li><a href="{u('how-bail-works-nc/')}">How bail works in NC</a></li><li><a href="{u('bail-bond-cost-nc/')}">What a bail bond costs</a></li><li><a href="{u('jail-guides/wake-county-jail/')}">Wake County jail guide</a></li><li><a href="{u('jail-guides/durham-county-jail/')}">Durham County jail guide</a></li><li><a href="{u('jail-guides/wilson-county-jail/')}">Wilson County jail guide</a></li><li><a href="{u('service-areas/')}">All counties we serve</a></li><li><a href="{u('faq/')}">FAQ</a></li></ul></div>

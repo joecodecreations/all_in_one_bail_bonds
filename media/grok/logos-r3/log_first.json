@@ -1,0 +1,202 @@
+[
+ {
+  "slug": "01-check-classic",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "01-check-classic_v1.jpg"
+  ]
+ },
+ {
+  "slug": "02-check-filled",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "02-check-filled_v1.jpg"
+  ]
+ },
+ {
+  "slug": "03-check-ring-gap",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "03-check-ring-gap_v1.jpg"
+  ]
+ },
+ {
+  "slug": "04-247-inside",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "04-247-inside_v1.jpg"
+  ]
+ },
+ {
+  "slug": "05-247-around",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "05-247-around_v1.jpg"
+  ]
+ },
+ {
+  "slug": "06-stopwatch",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "06-stopwatch_v1.jpg"
+  ]
+ },
+ {
+  "slug": "07-alarm-clock",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "07-alarm-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "08-moon-clock",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "08-moon-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "09-phone-clock",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "09-phone-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "10-minimal-line",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "10-minimal-line_v1.jpg"
+  ]
+ },
+ {
+  "slug": "11-monogram-clock",
+  "exit": 0,
+  "secs": 18,
+  "files": [
+   "11-monogram-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "12-o-is-clock",
+  "exit": 0,
+  "secs": 21,
+  "files": [
+   "12-o-is-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "13-badge-free-square",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "13-badge-free-square_v1.jpg"
+  ]
+ },
+ {
+  "slug": "14-clock-24-ring",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "14-clock-24-ring_v1.jpg"
+  ]
+ },
+ {
+  "slug": "15-bold-geometric",
+  "exit": 0,
+  "secs": 18,
+  "files": [
+   "15-bold-geometric_v1.jpg"
+  ]
+ },
+ {
+  "slug": "16-hourglass-clock",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "16-hourglass-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "17-arrow-clock",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "17-arrow-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "18-sunrise-clock",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "18-sunrise-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "19-heart-clock",
+  "exit": 0,
+  "secs": 20,
+  "files": [
+   "19-heart-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "20-house-clock",
+  "exit": 0,
+  "secs": 22,
+  "files": [
+   "20-house-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "21-signal-clock",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "21-signal-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "22-stacked-247",
+  "exit": 0,
+  "secs": 19,
+  "files": [
+   "22-stacked-247_v1.jpg"
+  ]
+ },
+ {
+  "slug": "23-retro-clock",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "23-retro-clock_v1.jpg"
+  ]
+ },
+ {
+  "slug": "24-gold-premium",
+  "exit": 0,
+  "secs": 18,
+  "files": [
+   "24-gold-premium_v1.jpg"
+  ]
+ },
+ {
+  "slug": "25-green-go",
+  "exit": 0,
+  "secs": 17,
+  "files": [
+   "25-green-go_v1.jpg"
+  ]
+ }
+]

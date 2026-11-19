@@ -102,7 +102,7 @@ def calc_html(start=5000, count=True, heading="What will a bail bond cost?", tra
 <div style="margin-top:16px;font-size:.9rem;color:#cbd7ec">
 <div style="display:flex;justify-content:space-between"><span>Paying the court in cash</span><b class="o-cash" style="color:#fff">${start:,}</b></div>
 <div style="height:10px;border-radius:99px;background:rgba(255,255,255,.12);margin:6px 0 12px"><div class="bar-cash" style="height:100%;width:100%;border-radius:99px;background:#5d7397"></div></div>
-<div style="display:flex;justify-content:space-between"><span>With a bondsman, at most</span><b class="o-premium" style="color:var(--gold)">${start * 15 // 100:,}</b></div>
+<div style="display:flex;justify-content:space-between"><span>With a bondsman, at most</span><b class="o-premium" style="color:var(--sky2)">${start * 15 // 100:,}</b></div>
 <div style="height:10px;border-radius:99px;background:rgba(255,255,255,.12);margin:6px 0 4px"><div class="bar-prem" style="height:100%;width:15%;border-radius:99px;background:var(--gold)"></div></div>
 <div style="color:#9fb1cf;margin-top:8px">Cash you don't have to put up: <b class="o-keep" style="color:#fff">${start * 85 // 100:,}</b></div>
 </div>
@@ -196,7 +196,7 @@ def home():
 </div></section>
 
 <section class="section office-band"><div class="bg">{pic("raleigh", "", sizes="100vw")}</div><div class="wrap">
-<span class="eyebrow" style="color:var(--gold)">Our offices</span>
+<span class="eyebrow" style="color:var(--sky2)">Our offices</span>
 <h2>Three offices, one phone call</h2>
 <p class="sub" style="color:#c6d3e8">We write bonds statewide. Most of our work is in the counties around these three offices.</p>
 {offices}
@@ -213,7 +213,7 @@ def home():
 <div class="big" data-count="{TOTAL_REVIEWS}">{TOTAL_REVIEWS}</div>
 <h2 style="margin-top:6px">five-star reviews on Google</h2>
 <p class="sub" style="margin:0 auto 20px">Every one of our offices holds a 5.0 rating. Read what families wrote, in their own words.</p>
-<div class="reviews-grid">{"".join(f'<a class="card" style="text-decoration:none" href="{maps_url(o["maps_query"])}" rel="noopener"><h3>{o["city"]}</h3><p class="stars" style="margin:0">★★★★★</p><p style="margin:4px 0 0">{o["google_rating"]} · {o["google_reviews"]} reviews <span style="color:var(--gold)">→</span></p></a>' for o in OFFICES)}</div>
+<div class="reviews-grid">{"".join(f'<a class="card" style="text-decoration:none" href="{maps_url(o["maps_query"])}" rel="noopener"><h3>{o["city"]}</h3><p class="stars" style="margin:0">★★★★★</p><p style="margin:4px 0 0">{o["google_rating"]} · {o["google_reviews"]} reviews <span style="color:var(--sky2)">→</span></p></a>' for o in OFFICES)}</div>
 </div></section>
 
 <section class="section"><div class="wrap two flip">
