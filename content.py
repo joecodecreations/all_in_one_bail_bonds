@@ -576,7 +576,7 @@ def jail_guides():
 {GOV_NOTE}
 {two}
 <h2>Step 1: Confirm where they are</h2>
-<p>{find}. You can also call {j['phone']}{(' (' + PHONE_LABEL[n] + ')') if n in PHONE_LABEL else ''}. Have the person's full legal name and date of birth ready.</p>
+<p>{("Start with the " + find) if lookup else find}. You can also call {j['phone']}{(' (' + PHONE_LABEL[n] + ')') if n in PHONE_LABEL else ''}. Have the person's full legal name and date of birth ready.</p>
 <h2>Step 2: Find out the bond and the conditions</h2>
 <p>A magistrate sets release conditions soon after most arrests. Domestic violence charges and certain serious felonies must wait for a judge, which can take up to 48 hours. If the condition is a secured bond, a bondsman can post it.</p>
 <h2>Step 3: Call a bondsman</h2>
